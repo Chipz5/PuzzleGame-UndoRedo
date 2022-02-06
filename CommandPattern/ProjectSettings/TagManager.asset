@@ -15,6 +15,7 @@ TagManager:
   - cheat
   - Invoker
   - ResetTag1
+  - tree
   layers:
   - Default
   - TransparentFX

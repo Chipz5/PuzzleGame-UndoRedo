@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CommandInvoker : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CommandInvoker : MonoBehaviour
     static List<ICommand> commandHistory;
     static int counter;
     static int numberOfObjects;
+    public Text txt;
 
 
     public void Awake()
@@ -48,6 +50,7 @@ public class CommandInvoker : MonoBehaviour
                 {
                     counter--;
                     commandHistory[counter].Undo();
+                    numberOfObjects--;
                 }
             }
             else if (Input.GetKeyDown(KeyCode.R))
@@ -56,6 +59,7 @@ public class CommandInvoker : MonoBehaviour
                 {
                     commandHistory[counter].Execute();
                     counter++;
+                    numberOfObjects++;
                 }
             }
         }
@@ -63,9 +67,10 @@ public class CommandInvoker : MonoBehaviour
         if(numberOfObjects >= 15)
         {
             ResetScene();
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("Game1");
         }
 
+        txt.text = numberOfObjects.ToString();
     }
 
     public void ResetScene()

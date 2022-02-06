@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             if (collision.gameObject.tag == "Water" || collision.gameObject.tag == "Fire" || collision.gameObject.tag == "enemy")
             {
                 invoker.ResetScene();
-                SceneManager.LoadScene("Game");
+                SceneManager.LoadScene("Game1");
             }
         }
         
@@ -66,6 +66,11 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
+        if (collision.gameObject.tag == "tree")
+        {
+            invoker.ResetScene();
+            SceneManager.LoadScene("Game1");
+        }
         if (collision.gameObject.tag == "door")
         {
             if(keys == 2 || hasCheat)
